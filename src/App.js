@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Navbar from "./Navbar";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Tasks from "./Tasks";
+import Input from "./Input";
+import { connect } from "react-redux";
+import { Add } from "./actions";
 
-function App() {
+const mapStateToProps = (state) => ({
+  local_variable: state,
+});
+
+const App = ({ local_variable }) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <h1>TODO</h1>
+      <Routes>
+        <Route path="/" exact element={<Input Add={Add} />} />
+        <Route path="/tasks" element={<Tasks text={local_variable} />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
-export default App;
+export default connect(mapStateToProps, { Add })(App);
