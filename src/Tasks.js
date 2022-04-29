@@ -12,9 +12,9 @@ export default function Tasks(props) {
       e.target.previousElementSibling.contentEditable = true;
     }
   }
-  function Delete(e) {
-    e.target.parentNode.remove();
-  }
+  // function Delete(e) {
+  //   // e.target.parentNode.remove();
+  // }
   let checkingState = checkIn.checked;
 
   let settingState = (e) => {
@@ -40,13 +40,14 @@ export default function Tasks(props) {
             <button
               onClick={(e) => {
                 Edit(e);
+                props.edit(e.target.previousElementSibling.value, index);
               }}
             >
               edit
             </button>
             <button
               onClick={(e) => {
-                Delete(e);
+                props.del(index)
               }}
             >
               delete
