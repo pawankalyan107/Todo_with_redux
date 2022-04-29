@@ -1,5 +1,3 @@
-const count = [];
-
 // const fetchJSON = async () => {
 //   const response = await fetch("https://api.github.com/users?since=135");
 //   const data = await response.json();
@@ -12,7 +10,7 @@ const count = [];
 //   });
 // });
 
-export default function reducer(state = count, action) {
+export default function reducer(state = [], action) {
   const { type, e, id, value, indx, payload } = action;
   switch (type) {
     case "FETCH_DATA":
@@ -27,12 +25,10 @@ export default function reducer(state = count, action) {
 
     case "DELETE":
       let data = state.filter((_, index) => index !== id);
-      state = [...data];
-      return state;
+      return [...data];
 
     case "EDIT":
       return (() => {
-        console.log(value);
         state.map((_, index) => {
           if (index === indx) {
             state[index] = value;
