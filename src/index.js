@@ -3,6 +3,9 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import store from "./store";
 import { Provider } from "react-redux";
+import { fetchdata } from "./actions";
+
+store.dispatch(fetchdata())
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

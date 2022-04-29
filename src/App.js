@@ -10,7 +10,6 @@ import { Delete, Edit } from "./actions";
 const mapStateToProps = (state) => ({
   local_variable: state,
 });
-
 const App = ({ local_variable, Add, Delete, Edit }) => {
   return (
     <BrowserRouter>

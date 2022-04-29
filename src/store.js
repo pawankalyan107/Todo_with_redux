@@ -4,7 +4,7 @@ import thunk from "redux-thunk";
 import reducer from "./reducer";
 
 const middleWare = [thunk];
-// console.log(applyMiddleware(...middleWare), thunk);
+// console.log(applyMiddleware(...middleWare), thunk)
 
 const store = createStore(
   reducer,
