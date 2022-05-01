@@ -3,14 +3,15 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import store from "./store";
 import { Provider } from "react-redux";
-import { fetchdata } from "./actions";
+import { fetchdata, fetchProfile } from "./actions";
 
 store.dispatch(fetchdata())
+store.dispatch(fetchProfile())
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={store} >
       <App />
     </Provider>
   </React.StrictMode>

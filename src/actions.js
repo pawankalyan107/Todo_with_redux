@@ -31,3 +31,22 @@ export const fetchdata = () => async (dispatch) => {
     payload: count,
   });
 };
+
+export const fetchProfile = () => async (dispatch) => {
+    const res = await fetch("https://api.github.com/users?since=135");
+    const data = await res.json();
+    let profiles = data.map((ele)=>{
+        return ele;
+    });
+    return dispatch({
+        type: "FETCH_PROFILES",
+        profiles: profiles,
+    });
+};
+
+export const foundId = (id) => async(dispatch) =>{
+    return dispatch({
+        type: "FOUND_ID",
+        fetchId : id,
+    })
+}

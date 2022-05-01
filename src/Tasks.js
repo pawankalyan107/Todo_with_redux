@@ -1,9 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { foundId } from "./actions";
+import store  from "./store";
 
 export default function Tasks(props) {
   // console.log(props.text)
   const [checkIn, setCheckIn] = React.useState({
-
     checked: false,
   });
   let show = "edit"
@@ -18,7 +20,7 @@ export default function Tasks(props) {
     }
   }
   // function Delete(e) {
-  //   // e.target.parentNode.remove();
+  //   e.target.parentNode.remove();
   // }
   let checkingState = checkIn.checked;
 
@@ -36,13 +38,29 @@ export default function Tasks(props) {
       e.target.nextElementSibling.style.textDecoration = "line-through";
     }
   }
+
+  function findId(e){
+    let id 
+    props.id.map((ele)=>{
+      if(ele.login === e.target.innerText){
+        id = ele.id
+        return ele.id
+      }
+      return id
+    })
+    return store.dispatch(foundId(id))
+    
+  }
+
   return (
     <>
       {props.text.map((ele, index) => {
         return (
           <div key={index}>
             <input type="checkbox" onClick={(e) => settingState(e)} ></input>
-            <p style={{ border: "1px solid black" }} >{ele}</p>
+            <Link to={'/profiles'}>
+            <p style={{ border: "1px solid black" }} onClick={(e)=>{ findId(e)}}>{ele}</p>
+            </Link>
             <button
               onClick={(e) => {
                 Edit(e);

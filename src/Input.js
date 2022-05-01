@@ -1,6 +1,5 @@
 import React from "react";
 import store from "./store";
-
 export default function Input(props) {
   return (
     <>

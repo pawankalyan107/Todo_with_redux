@@ -10,7 +10,7 @@
 //   });
 // });
 
-export default function reducer(state = [], action) {
+export function reducer(state = [], action) {
   const { type, e, id, value, indx, payload } = action;
   switch (type) {
     case "FETCH_DATA":
@@ -40,5 +40,27 @@ export default function reducer(state = [], action) {
 
     default:
       return state;
+  }
+}
+
+export function reducer1(state = {}, action) {
+  const { type, profiles, fetchId } = action;
+  switch (type) {
+    case "FETCH_PROFILES":
+      state = {
+        ...state,
+        prof: [...profiles],
+      };
+      return state;
+
+    case "FOUND_ID":
+      state = {
+        ...state,
+        Id: fetchId,
+      };
+      return state;
+
+    default:
+        return state
   }
 }
